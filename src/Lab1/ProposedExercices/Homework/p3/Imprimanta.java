@@ -1,14 +1,23 @@
 package Lab1.ProposedExercices.Homework.p3;
 
 public class Imprimanta extends Thread {
-    private Document document;
-    private Functionar functionar;
+    private Data data;
+    private long delay;
 
-    public Imprimanta(Document document, Functionar functionar) {
-        this.document = document;
+    public Imprimanta(Data data, long delay) {
+        this.data = data;
+        this.delay = delay;
     }
 
     public void run() {
-        System.out.println("Acum se printeata documentul" + document.getName() + " de catre " + functionar.getName());
+        try {
+            String document = "";
+            while (!document.equals("Functionar 6 3")) {
+                document = data.printDocument();
+                sleep(delay);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

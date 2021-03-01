@@ -1,30 +1,32 @@
 package Lab1.ProposedExercices.Homework.p3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Functionar extends Thread {
-    private Document document;
-    private int delay;
+    private final List<String> documents = new ArrayList<>();
+    private final String nume;
+    private final Data data;
+    private final int delay;
 
-    public Functionar(Document nume, int delay) {
-        this.document = nume;
+    public Functionar(Data data, int delay, String nume) {
+        this.data = data;
         this.delay = delay;
-    }
-
-    public Document getDocument() {
-        return document;
-    }
-
-    public void setDocument(Document document) {
-        this.document = document;
+        this.nume = nume;
+        for (int i = 0; i < 3; i++) {
+            documents.add(nume + " " + (i + 1));
+        }
     }
 
     public void run() {
         try {
-            System.out.println("Created document " + document);
+            for (String doc : documents) {
+                data.addToPrinter(doc);
+                sleep(delay);
+            }
             sleep(delay);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-
-
 }
