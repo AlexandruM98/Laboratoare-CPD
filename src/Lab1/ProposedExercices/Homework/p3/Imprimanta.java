@@ -1,4 +1,4 @@
-package Lab1.ProposedExercices.p3;
+package Lab1.ProposedExercices.Homework.p3;
 
 public class Imprimanta extends Thread {
     private Document document;
